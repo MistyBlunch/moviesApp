@@ -1,16 +1,21 @@
 import "./App.css";
-import { MoviesList } from "./components/MoviesList";
 
 import { Nav } from "./components/Nav";
 
+import { BrowserRouter as Router, Route, Routes, Link } from "react-router-dom";
+import { MovieDetails } from "./components/MovieDetails";
+import { MoviesList } from "./components/MoviesList";
 
 export function App() {
   return (
-    <div className="App">
+    <Router>
       <Nav tittle="Movies" />
       <main>
-        <MoviesList />
+        <Routes>
+          <Route exact path="/movies/:movieId" element={<MovieDetails />} />
+          <Route path="/" element={<MoviesList />} />
+        </Routes>
       </main>
-    </div>
+    </Router>
   );
 }
